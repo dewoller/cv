@@ -80,7 +80,7 @@ CV %<>% print_text_block('employment_experience_aside')
 if(params$pdf_mode){
   cat("View this CV online with links at https://dewoller.github.io/cv/cv.html")
 } else {
-  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/dewoller/cv/raw/master/dewoller_cv.pdf)")
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/dewoller/cv/raw/master/cv.pdf)")
 }
 ```
 
