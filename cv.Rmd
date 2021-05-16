@@ -4,7 +4,7 @@ author: Dennis Wollersheim
 date: "`r Sys.Date()`"
 params:
   pdf_mode:
-    value: true
+    value: false
 output:
   pagedown::html_resume:
     css: ['dd_cv.css', 'resume']
@@ -48,16 +48,12 @@ Aside
 ```{r}
 # Build interactive network of positions colored by section
 # and connected if they occurred in the same year
+
+#CV$entries_data %<>%
+#  dplyr::mutate( start_year=start,
+#         end_year=end)
 #datadrivencv::build_network_logo(CV$entries_data)
-```
 
-
-```{r}
-if(params$pdf_mode){
-  cat("View this CV online with links at ")
-} else {
-  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/dewoller/cv/raw/master/dewoller_cv.pdf)")
-}
 ```
 
 Contact {#contact}
@@ -66,14 +62,26 @@ Contact {#contact}
 ```{r}
 CV %>% print_contact_info()
 ```
+<br/>
+<br/>
+<br/>
+<br/>
 
-
-
-Language Skills {#skills}
---------------------------------------------------------------------------------
 
 ```{r}
-CV %>% print_skill_bars()
+CV %<>% print_text_block('employment_experience_aside')
+```
+<br/>
+<br/>
+<br/>
+
+
+```{r}
+if(params$pdf_mode){
+  cat("View this CV online with links at https://dewoller.github.io/cv/cv.html")
+} else {
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/dewoller/cv/raw/master/dewoller_cv.pdf)")
+}
 ```
 
 
@@ -100,57 +108,37 @@ Dennis Wollersheim {#title}
 CV %<>% print_text_block("intro") 
 ```
 
+Employment {data-icon=briefcase}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('employment')
+```
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
 
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
+::: aside
+```{r}
+CV %<>% print_text_block('education_aside')
+```
+:::
+
 ```{r}
 CV %<>% print_section('education')
 ```
-
-
-Teaching Experience {data-icon=chalkboard-teacher}
---------------------------------------------------------------------------------
-
-::: aside
-```{r}
-CV %<>% print_text_block('teaching_experience_aside')
-```
-:::
-
-```{r}
-CV %<>% print_section('teaching_positions')
-```
-<br/>
-<br/>
-<br/>
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-Research Experience {data-icon=laptop}
---------------------------------------------------------------------------------
-
-::: aside
-```{r}
-CV %<>% print_text_block('research_experience_aside')
-```
-:::
-
-```{r}
-CV %<>% print_section('research_positions')
-```
-
-```{r}
-CV %<>% print_section('grants')
-```
-
-```{r}
-CV %<>% print_section('academic_writing')
-```
-
 
 
 

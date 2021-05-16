@@ -81,6 +81,11 @@ sup {
   width: calc(var(--sidebar-width) + 9px);
   line-height: 1.2;
   font-size: 0.75rem;
+
+}
+
+.aside .level2 {
+    margin-top: 0;
 }
 
 /* Make little circle outline be a light blue */
