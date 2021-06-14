@@ -26,6 +26,9 @@ rmarkdown::render("cv.Rmd",
 # Convert to PDF using Pagedown
 pagedown::chrome_print(input = tmp_html_cv_loc,
                        output = "docs/cv.pdf")
- system('evince docs/cv.pdf', wait=FALSE)
+system('git commit -am "update"')
+#system('git push')
+       
+system('evince docs/cv.pdf', wait=FALSE)
 
 
